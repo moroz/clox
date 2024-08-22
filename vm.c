@@ -43,10 +43,15 @@ static InterpretResult run() {
 
     uint8_t instruction;
     switch (instruction = READ_BYTE()) {
+    case OP_NEGATE:
+      push(-pop());
+      break;
+
     case OP_RETURN: {
       printValue(pop());
       printf("\n");
       return INTERPRET_OK;
+    }
 
     case OP_CONSTANT: {
       Value constant = READ_CONSTANT();
@@ -54,7 +59,6 @@ static InterpretResult run() {
       printValue(constant);
       printf("\n");
       break;
-    }
     }
     }
   }
