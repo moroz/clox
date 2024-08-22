@@ -1,5 +1,7 @@
+CC = clang-18
+
 default:
-	cc -o clox *.c
+	${CC} -o clox *.c
 
 run: default
 	./clox
